@@ -1,0 +1,26 @@
+{
+  "name": "esoteric-code",
+  "version": "1.0.0",
+  "main": "index.ts",
+  "repository": "git@github.com:judemorrissey/esoteric-code.git",
+  "author": "Jude Morrissey <judemorrissey@users.noreply.github.com>",
+  "license": "Unlicense",
+  "devDependencies": {
+    "gts": "^6.0.2",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.3",
+    "@types/node": "^22.7.5"
+  },
+  "dependencies": {},
+  "scripts": {
+    "start": "node build/index.js",
+    "prestart": "yarn run compile",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "prepare": "yarn run compile",
+    "pretest": "yarn run compile",
+    "posttest": "yarn run lint"
+  }
+}

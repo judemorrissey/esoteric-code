@@ -178,17 +178,21 @@ depth 3:    18,24,4
 /*
   more optimal solution that has O(1) space complexity
 */
-const findMin = (arr) => {
+const findMin = (arr: number[]) => {
   let leftIdx = 0;
   let rightIdx = arr.length - 1;
   let iters = 10; // anti infinite loop
   while (leftIdx < rightIdx && --iters > 0) {
     console.log({
-      leftIdx, rightIdx
-    })
+      leftIdx,
+      rightIdx,
+    });
     const midIdx = Math.floor((leftIdx + rightIdx) / 2);
     const midVal = arr.at(midIdx);
     const rightVal = arr.at(rightIdx);
+    if (!midVal || !rightVal) {
+      throw new Error('invalid state');
+    }
     if (midVal < rightVal) {
       rightIdx = midIdx;
     } else {
@@ -227,7 +231,7 @@ const findMin = (arr) => {
 //   }
 // };
 
-const cases = [
+const cases: [number, number[]][] = [
   [1, [1, 2, 3, 4, 5, 6, 7]],
   [1, [7, 1, 2, 3, 4, 5, 6]],
   [1, [6, 7, 1, 2, 3, 4, 5]],
@@ -243,14 +247,14 @@ const cases = [
 ];
 
 cases.forEach(([min, arr], idx) => {
-  console.log("case", idx)
+  console.log('case', idx);
   const calc = findMin(arr);
   console.log({
     min,
     arr,
     calc,
     result: min === calc,
-  })
-  console.log()
-  console.log()
+  });
+  console.log();
+  console.log();
 });
